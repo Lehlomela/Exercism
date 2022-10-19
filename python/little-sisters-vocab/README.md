@@ -9,7 +9,7 @@ If you get stuck on the exercise, check out `HINTS.md`, but try and solve it wit
 A `str` in Python is an [immutable sequence][text sequence] of [Unicode code points][unicode code points].
 These could include letters, diacritical marks, positioning characters, numbers, currency symbols, emoji, punctuation, space and line break characters, and more.
  Being immutable, a `str` object's value in memory doesn't change; methods that appear to modify a string return a new copy or instance of that `str` object.
-
+ 
 
 A `str` literal can be declared via single `'` or double `"` quotes. The escape `\` character is available as needed.
 
@@ -88,6 +88,7 @@ Indexing also works from the right, starting with a `-1-based index`:
 
 
 ```python
+
 creative = '창의적인'
 
 >>> creative[-4]
