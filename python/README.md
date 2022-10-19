@@ -1,5 +1,17 @@
-# Python NOTES
-
+- [Python Exceptions](#python-exceptions)
+  - [Syntax Errors](#syntax-errors)
+- [Exceptions](#exceptions)
+  - [Handling Exceptions](#handling-exceptions)
+  - [Raising Exceptions](#raising-exceptions)
+- [Built-in Types](#built-in-types)
+  - [Sequence Types](#sequence-types)
+    - [Lists](#lists)
+    - [Tuples](#tuples)
+    - [Ranges](#ranges)
+  - [Set Types](#set-types)
+  - [Mapping Types](#mapping-types)
+    - [dict](#dict)
+    - [Dictionery View Objects](#dictionery-view-objects)
 
 ## Python Exceptions
 
