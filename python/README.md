@@ -12,6 +12,9 @@
   - [Mapping Types](#mapping-types)
     - [dict](#dict)
     - [Dictionery View Objects](#dictionery-view-objects)
+  - [Text Sequence Types Str](#text-sequence-types-str)
+    - [String Methods](#string-methods)
+    - [`printf-style` String Formatting](#printf-style-string-formatting)
 
 ## Python Exceptions
 
@@ -138,6 +141,52 @@ use the `raise` keyword
 
 #### [Ranges][Ranges]
 
+**Constructors**
+`range(stop)`, 
+`range(start = 0, stop[, step = 1])`
+
+Range implement the `collections.abc.Sequence` ABC
+
+> The arguments to the range constructor must be integers (either built-in int or any object that implements the `__index__()` special method).
+
+```python
+
+>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> list(range(1, 11))
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> list(range(0, 30, 5))
+[0, 5, 10, 15, 20, 25]
+>>> list(range(0, 10, 3))
+[0, 3, 6, 9]
+>>> list(range(0, -10, -1))
+[0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+>>> list(range(0))
+[]
+>>> list(range(1, 0))
+[]
+```
+> The advantage of the range type over a regular list or tuple is that a range object will always take the same (small) amount of memory, no matter the size of the range it represents (as it only stores the start, stop and step values, calculating individual items and subranges as needed)
+
+```python shell
+>>> r = range(0, 20, 2)
+>>> r
+range(0, 20, 2)
+>>> 11 in r
+False
+>>> 10 in r
+True
+>>> r.index(10)
+5
+>>> r[5]
+10
+>>> r[:5]
+range(0, 10, 2)
+>>> r[-1]
+18
+```
+> Testing range objects for equality with == and != _compares them as sequences_. That is, two range objects are considered equal if they represent the same sequence of values. (Note that two range objects that compare equal might have different start, stop and step attributes, for example range(0) == range(2, 1, 3) or range(0, 3, 2) == range(0, 4, 2).)
+
 [Ranges]: https://docs.python.org/3.10/library/stdtypes.html#ranges
 
 ### [Set Types][SetTypes]
@@ -185,3 +234,63 @@ Dictionary views can be iterated over to yield their respective data, and suppor
 
 
 [dicView]: https://docs.python.org/3.10/library/stdtypes.html#dictionary-view-objects
+
+### [Text Sequence Types Str][TStypes]
+
+1. Immutable sequence of unicode
+2. Constructor: `str(object = '')` , `str(object=b'', encoding='utf-8', errors='strict')`
+
+```python
+
+# Can be written in a variety of ways
+single_quotes = 'allows embedded "double" quotes'
+double_quotes = "allows embedded 'single' quotes"
+triple_quoted = '''Three single quotes'''# or """Three double quotes""", may span multiple lines
+```
+
+> String literals that are part of a single expression and have only whitespace between them will be implicitly converted to a single string literal. That is, ("spam " "eggs") == "spam eggs".
+
+See **[String literals][strLiteral]** for more.
+
+
+#### [String Methods][strMethods]
+
+link to the docs provided
+
+#### [`printf-style` String Formatting][strPrintf]
+
+<mark>read again</mark>
+
+[ref](https://realpython.com/python-string-formatting/)
+
+`%`: string _formatting_ or _interpolation operator_ => similar to using `System.out.printf()` in java
+
+
+```python
+print('%(language)s has %(number)03d quote types.' %
+      {'language': "Python", "number": 2})
+# output: Python has 002 quote types.
+
+'Hey {name}, there is a 0x{errno:x} error!'.format( # the `:x' converts it to a Signed hexadecimal (lowercase).
+    name=name, errno=errno)
+# output: 'Hey Bob, there is a 0xbadc0ffee error!'
+
+def greet(name, question):
+    return f"Hello, {name}! How's it {question}?"
+
+greet('Bob', 'going')
+# output: "Hello, Bob! How's it going?"
+```
+
+```python
+from string import Template
+t = Template('Hey, $name!') # we need to import the Template class from Python’s built-in string module
+t.substitute(name=name)
+# output: 'Hey, Bob!'
+```
+
+
+[TStypes]: https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str
+[strLiteral]: https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals
+[strMethods]: https://docs.python.org/3/library/stdtypes.html#string-methods
+[strPrintf]: https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
