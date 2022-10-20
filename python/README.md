@@ -15,6 +15,11 @@
   - [Text Sequence Types Str](#text-sequence-types-str)
     - [String Methods](#string-methods)
     - [`printf-style` String Formatting](#printf-style-string-formatting)
+- [Numbers in python](#numbers-in-python)
+  - [Integers](#integers)
+  - [Floating-Point Numbers](#floating-point-numbers)
+  - [Mathematical Functions](#mathematical-functions)
+  - [Displaying Numbers](#displaying-numbers)
 
 ## Python Exceptions
 
@@ -294,3 +299,88 @@ t.substitute(name=name)
 [strLiteral]: https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals
 [strMethods]: https://docs.python.org/3/library/stdtypes.html#string-methods
 [strPrintf]: https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
+
+
+## [Numbers in python][Numbers]
+
+[Real Python][RPythonNumbers]
+
+### Integers
+
+```python
+>>> int("1")
+1
+
+>>> type(1)
+<class 'int'>
+
+>>> 1_000_000
+1000000
+
+```
+
+There's is no limit to how large an integer may be in python.
+
+### Floating-Point Numbers
+
+**float**: number with a decimal  place `1.0`, `-1.4`
+
+
+```python
+
+>>> type(1.0)
+<class 'float'>
+
+>>> float("1.25")
+1.25
+
+>>> 1_000_000.0
+1000000.0 
+
+>>> 1e6 #  1e6 is equivalent to 1×10⁶.
+1000000.0
+
+>>> 2e400
+inf
+# inf stands for infinity, and it just means that the number you’ve tried 
+# to create is beyond the maximum floating-point value allowed on your computer
+
+```
+
+> Unlike integers, floats do have a maximum size. The maximum floating-point number depends on your system, but something like 2e400 ought to be well beyond most machines’ capabilities.
+
+
+### [Mathematical Functions][MathsFunctions]
+link to docs included. Also check out out real python.
+
+- [Mathematical functions for complex numbers][mfuncComplex]
+- [Generate pseudo random numbers][genRandomNum]
+- [Mathematical statistics functions][mathStatsFunc]
+
+
+### Displaying Numbers
+
+[Format spec][FormatSpec]
+
+```python
+>>> n = 7.125
+>>> f"The value of n is {n:.2f}"
+'The value of n is 7.12'
+
+# The colon (:) after the variable n indicates that everything after it is
+# part of the formatting specification. In this example, the formatting 
+# specification is .2f.
+
+# The .2 in .2f rounds the number to two decimal places, and the f tells
+# Python to display n as a fixed-point number. This means that the number is
+# displayed with exactly two decimal places, even if the original number has
+# fewer decimal places.
+```
+
+[FormatSpec]: https://docs.python.org/3/library/string.html#format-specification-mini-language
+[mathStatsFunc]: https://docs.python.org/3/library/statistics.html
+[genRandomNum]: https://docs.python.org/3/library/random.html
+[mfuncComplex]: https://docs.python.org/3/library/cmath.html
+[Numbers]: https://docs.python.org/3/library/numeric.html
+[RPythonNumbers]: https://realpython.com/python-numbers/#:~:text=Python%20has%20three%20built%2Din,numbers%20in%20a%20later%20section.
+[MathsFunctions]: https://docs.python.org/3/library/math.html
